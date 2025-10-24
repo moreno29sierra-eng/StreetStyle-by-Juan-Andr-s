@@ -1,114 +1,263 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🛍️ StreetStyle by Juan Andrés</title>
-  <meta name="description" content="StreetStyle by Juan Andrés — Moda urbana para quienes viven su propio estilo.">
-  <style>
-    :root {
-      --bg: #0f0f0f;
-      --card: #1a1a1a;
-      --text: #f5f5f5;
-      --accent: #00a2ff;
-      --border: #333;
-      --warn: #e63946;
-    }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      font-family: system-ui;
+      background-color: #f4f4f4;
+      color: #333;
       padding: 20px;
+      text-align: center;
     }
 
     h1 {
-      color: var(--accent);
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
+      color: #222;
+      margin-bottom: 4px;
     }
 
     .slogan {
-      text-align: center;
-      color: #bbb;
-      font-weight: 400;
-      margin-bottom: 24px;
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+      font-style: italic;
     }
 
-    label { font-weight: 500; }
+    label {
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
     select {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
-      margin: 10px 0 20px 10px;
-      cursor: pointer;
-      transition: border-color 0.2s ease;
-    }
-    select:hover { border-color: var(--accent); }
-
-    #productos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
     }
 
+    /* ==== Tarjetas de producto con efecto hover ==== */
     .producto {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      width: 230px;
-      text-align: center;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      width: 220px;
+      background: white;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .producto:hover {
-      transform: scale(1.07);
-      box-shadow: 0 10px 20px rgba(0, 162, 255, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .producto img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      transition: transform 0.35s ease, filter 0.35s ease;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
     }
 
     .producto:hover img {
       transform: scale(1.05);
-      filter: brightness(1.1);
     }
 
-    .producto h3 { margin: 8px 0; font-size: 1rem; color: #fff; }
-    .producto p { color: #ccc; margin-bottom: 6px; }
+    .producto h3 {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: #222;
+    }
+
+    .producto p {
+      margin: 4px 0;
+      color: #555;
+      font-weight: 500;
+    }
 
     .producto button {
-      background-color: var(--accent);
+      background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 6px;
-      padding: 8px 10px;
+      border-radius: 4px;
+      padding: 6px 10px;
       cursor: pointer;
-      transition: background 0.25s, transform 0.25s;
+      margin-top: 6px;
+      transition: background-color 0.2s;
     }
 
     .producto button:hover {
-      background-color: #0085d1;
-      transform: scale(1.05);
+      background-color: #0056b3;
     }
 
+    /* ==== Carrito ==== */
     .carrito {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 40px;
-      max-width: 500px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 30px;
+      display: inline-block;
+      text-align: left;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .carrito h2 {
+      color: #007bff;
+      text-align: center;
+    }
+
+    .carrito ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .carrito li {
+      padding: 6px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.95em;
+    }
+
+    .vaciar {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      margin: 10px auto 0;
+    }
+
+    .vaciar:hover {
+      background-color: #b52a36;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>🛍️ StreetStyle by Juan Andrés</h1>
+  <p class="slogan">Hecho para quienes viven su propio estilo</p>
+
+  <!-- Filtro -->
+  <label for="categoria">Filtrar por categoría:</label>
+  <select id="categoria">
+    <option value="todos">Todos</option>
+    <option value="Hoodies">🧥 Hoodies</option>
+    <option value="Gorras">🧢 Gorras</option>
+    <option value="Busos oversize">👕 Busos oversize</option>
+  </select>
+
+  <div id="productos"></div>
+
+  <div class="carrito">
+    <h2>🧾 Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p><strong>Total: <span id="total">0</span></strong></p>
+    <button class="vaciar" onclick="vaciarCarrito()">🧼 Vaciar Carrito</button>
+    <div id="paypal-button-container" style="margin-top:10px; display:none;"></div>
+  </div>
+
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=COP"></script>
+
+  <script>
+    const productos = [
+      { id: 1, nombre: "Hoodie “Black Street”", categoria: "Hoodies", precio: 120000, imagen: "https://i.pinimg.com/736x/3f/41/e7/3f41e7fdbbafbbc70e83746d9c5e24d7.jpg" },
+      { id: 2, nombre: "Hoodie “Retro Gray”", categoria: "Hoodies", precio: 115000, imagen: "https://i.pinimg.com/736x/14/52/3b/14523bbd05fe70ee6d4df07cd6d5afa2.jpg" },
+      { id: 3, nombre: "Gorra “NYC Flat”", categoria: "Gorras", precio: 75000, imagen: "https://i.pinimg.com/1200x/12/81/93/128193cd04ffcd886dbfe9ecf47e80a4.jpg"},
+      { id: 4, nombre: "Gorra “Classic White”", categoria: "Gorras", precio: 70000, imagen: "https://i.pinimg.com/1200x/a7/af/b3/a7afb34258a4e8d4ecdd8d68424d4144.jpg" },
+      { id: 5, nombre: "Buso Oversize “Storm”", categoria: "Busos oversize", precio: 95000, imagen: "https://i.pinimg.com/1200x/58/c7/da/58c7da4867a8b09bf0a14df2a61433c1.jpg" },
+      { id: 6, nombre: "Buso Oversize “Skyline”", categoria: "Busos oversize", precio: 99000, imagen: "https://i.pinimg.com/736x/73/7b/fe/737bfef34be585e77ba72f8c3ad0ac14.jpg" }
+    ];
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const contenedorProductos = document.getElementById("productos");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalCarrito = document.getElementById("total");
+    const categoriaSelect = document.getElementById("categoria");
+    const paypalContainer = document.getElementById("paypal-button-container");
+
+    const formato = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' });
+
+    function renderProductos(lista = productos) {
+      contenedorProductos.innerHTML = "";
+      lista.forEach(prod => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.nombre}">
+          <h3>${prod.nombre}</h3>
+          <p>${formato.format(prod.precio)}</p>
+          <button onclick="agregarAlCarrito(${prod.id})">Agregar</button>
+        `;
+        contenedorProductos.appendChild(div);
+      });
+    }
+
+    function agregarAlCarrito(id) {
+      const producto = productos.find(p => p.id === id);
+      const existente = carrito.find(p => p.id === id);
+      if (existente) existente.cantidad++;
+      else carrito.push({ ...producto, cantidad: 1 });
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      listaCarrito.innerHTML = "";
+      let total = 0;
+
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} x${item.cantidad} - ${formato.format(item.precio * item.cantidad)}`;
+        listaCarrito.appendChild(li);
+        total += item.precio * item.cantidad;
+      });
+
+      totalCarrito.textContent = formato.format(total);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+
+      paypalContainer.style.display = total > 0 ? "block" : "none";
+      if (total > 0) renderPayPal(total);
+    }
+
+    function vaciarCarrito() {
+      if (confirm("¿Vaciar carrito?")) {
+        carrito = [];
+        actualizarCarrito();
+      }
+    }
+
+    function renderPayPal(total) {
+      paypalContainer.innerHTML = "";
+      paypal.Buttons({
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units: [{ amount: { value: total.toFixed(2), currency_code: 'COP' } }]
+        }),
+        onApprove: (data, actions) => actions.order.capture().then(() => {
+          alert("✅ Pago aprobado. ¡Gracias por tu compra!");
+          carrito = [];
+          actualizarCarrito();
+        })
+      }).render("#paypal-button-container");
+    }
+
+    categoriaSelect.addEventListener("change", () => {
+      const cat = categoriaSelect.value;
+      const filtrados = cat === "todos" ? productos : productos.filter(p => p.categoria === cat);
+      renderProductos(filtrados);
+    });
+
+    // Inicializar
+    renderProductos();
+    actualizarCarrito();
+  </script>
+</body>
+</html>
